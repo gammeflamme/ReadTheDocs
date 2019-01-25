@@ -20,6 +20,10 @@ Deconz installation
 
 * Execute raspi-config and turn off the serial login as this will enter in conflict with deconz (do not disable also the hardware serial port)
 * Follow the steps from here: https://github.com/dresden-elektronik/deconz-rest-plugin for the deconz.deb package download and installation (no need to install dev package or compile the code)
+* Enable Dexonz::
+
+    sudo systemctl enable deconz
+
 * Edit the Deconz systemd script to bind on port 8080: ``sudo nano /etc/systemd/system/deconz.service`` replace ``--http-port=80`` with ``--http-port=8080 --upnp=0 --ws-port=8081``
 * Start the Deconz service, browse to ``http://{hue emulator ip}:8080`` and add all zigbee devices.
   This is done by clicking "Open network" in settings and then reset the devices. Don't configure any device in deconz.
